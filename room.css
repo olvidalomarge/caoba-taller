@@ -1,0 +1,72 @@
+@layer components {
+  .room-dialog {
+    width: 1050px;
+    padding: 22px 16px;
+  }
+
+  .room-dialog h2 { text-wrap: balance; }
+  .room-intro {
+    margin-bottom: 16px;
+    color: var(--muted);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .room-layout { display: grid; gap: 16px; }
+  .room-stage {
+    position: relative;
+    height: clamp(210px, 44dvh, 490px);
+    border-radius: 14px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 55% 22%, #f4e9db, #d7bda1);
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+  }
+
+  .room-stage:active { cursor: grabbing; }
+  .room-stage > * {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .room-stage video, .room-stage img { object-fit: cover; }
+  .room-stage img { object-fit: contain; background: #20150f; }
+  .room-actions { display: grid; align-content: start; gap: 14px; min-width: 0; }
+  .room-placements {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px 14px;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    font-size: 0.875rem;
+  }
+
+  .room-placements input { width: 100%; min-height: 34px; margin: 0; accent-color: var(--caoba); }
+  .room-placements button { grid-column: 1 / -1; justify-self: start; min-height: 36px; }
+  .room-sources { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .room-sources .button { flex: 1 1 auto; min-height: 44px; font-size: 0.875rem; padding-inline: 13px; }
+  .room-status {
+    border-radius: 12px;
+    background: #eadcc9;
+    padding: 12px 14px;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .room-direct-link { text-decoration: underline; font-size: 0.875rem; }
+  .room-note { color: var(--muted); font-size: 0.8125rem; line-height: 1.65; }
+
+  @media (min-width: 760px) {
+    .room-dialog { padding: 30px; }
+    .room-layout { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 24px; }
+    .room-stage { height: clamp(290px, 57dvh, 540px); }
+    .room-sources .button { flex: 0 0 auto; padding-inline: 20px; }
+  }
+}
